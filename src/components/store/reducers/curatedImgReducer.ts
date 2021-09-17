@@ -6,7 +6,7 @@ const initialState: IimageFetchState = {
     error: null
 }
 
-export const imgReducer = (state = initialState, action: imageActionType): IimageFetchState => {
+export const curatedImgReducer = (state = initialState, action: imageActionType): IimageFetchState => {
     switch (action.type) {
         case imageFetchTypes.FETCH_IMAGE:
             return {
