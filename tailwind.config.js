@@ -1,3 +1,4 @@
+
 module.exports = {
     darkMode: 'class',
     purge: ['./src/**/*.html', './src/**/*.jsx', './src/**/*.js', './src/**/*.ts', './src/**/*.tsx'],
@@ -16,7 +17,7 @@ module.exports = {
                 },
             },
             fontFamily: {
-                roboto: ['Roboto', 'Inter', 'system-ui', '-apple-system'],
+                roboto: ['Rubik', 'Inter', 'system-ui', '-apple-system'],
             },
         },
     },

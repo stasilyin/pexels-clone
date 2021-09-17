@@ -1,10 +1,12 @@
 import React from 'react';
+import Header from "./components/header/Header";
 
-function App() {
+const App: React.FC = () => {
+  console.log(process.env.REACT_APP_PEXELS_API_KEY)
   return (
-    <div className="App">
-
-    </div>
+      <div className="App">
+          <Header />
+      </div>
   );
 }
 

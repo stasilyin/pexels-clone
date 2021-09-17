@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.3.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -11,6 +12,9 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.18",
+    "@types/redux-thunk": "^2.1.0",
+    "dotenv": "^10.0.0",
+    "pexels": "^1.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-localization": "^1.0.17",
@@ -18,15 +22,18 @@
     "react-scripts": "4.0.3",
     "redux": "^4.1.1",
     "redux-saga": "^1.1.3",
+    "redux-thunk": "^2.3.0",
     "tailwind": "^4.0.0",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "craco start .env.local",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:css": "tailwind build src/index.css -o src/index.css",
+    "watch:css": "chokidar 'src/index.css' -c 'npm run build:css'"
   },
   "eslintConfig": {
     "extends": [
@@ -45,5 +52,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^6.2.1",
+    "postcss": "^7.0.36",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14"
   }
 }
