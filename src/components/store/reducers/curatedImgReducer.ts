@@ -1,30 +1,30 @@
-import { imageFetchTypes, IimageFetchState, imageActionType }  from '../../types/imgFetch'
+import { imageFetchCuratedTypes, IimageFetchCuratedState, imageCuratedActionType }  from '../../types/imgFetch'
 
-const initialState: IimageFetchState = {
-    img: [],
-    loading: false,
-    error: null
+const initialState: IimageFetchCuratedState = {
+    imgCurated: [],
+    loadingCurated: false,
+    errorCurated: null
 }
 
-export const curatedImgReducer = (state = initialState, action: imageActionType): IimageFetchState => {
+export const curatedImgReducer = (state = initialState, action: imageCuratedActionType): IimageFetchCuratedState => {
     switch (action.type) {
-        case imageFetchTypes.FETCH_IMAGE:
+        case imageFetchCuratedTypes.FETCH_IMAGE_CURATED:
             return {
-                img: [],
-                loading: true,
-                error: null
+                imgCurated: [],
+                loadingCurated: true,
+                errorCurated: null
             }
-        case imageFetchTypes.FETCH_IMAGE_SUCCESS:
+        case imageFetchCuratedTypes.FETCH_IMAGE_CURATED_SUCCESS:
             return {
-                img: action.payload,
-                loading: false,
-                error: null
+                imgCurated: action.payload,
+                loadingCurated: false,
+                errorCurated: null
             }
-        case imageFetchTypes.FETCH_IMAGE_ERROR:
+        case imageFetchCuratedTypes.FETCH_IMAGE_CURATED_ERROR:
             return {
-                img: [],
-                loading: false,
-                error: action.payload
+                imgCurated: [],
+                loadingCurated: false,
+                errorCurated: action.payload
             }
         default:
             return state

@@ -15,7 +15,7 @@ const NavBar: React.FC = () => {
     window.addEventListener("scroll", changeBackgroundNavbar)
 
     return (
-        <nav className={`sticky ${changeColorNav ? 'bg-transparent' : 'bg-gray-100 animate-fade'} h-66px 
+        <nav className={`fixed ${changeColorNav ? 'bg-transparent' : 'bg-gray-100 animate-fade'} h-66px 
                         flex justify-center items-center text-xl w-full top-0 z-50`}>
             <div className={'w-90'}>
                 <a href='/'  className={'flex items-center'}>
