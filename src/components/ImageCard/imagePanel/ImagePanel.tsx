@@ -1,5 +1,5 @@
 import React from 'react'
-import {imagePanelType} from "../../types/imagePanelType"
+import {imagePanelType} from "../../../types/imagePanelType"
 import downloadIcon from '../../../img/DownloadIcon.svg'
 import addToCollectionIcon from '../../../img/AddToCollectionIcon.svg'
 import like from '../../../img/Like.svg'
@@ -20,7 +20,7 @@ const ImagePanel: React.FC<imagePanelType> = ({
                     <span className={'text-white text-gray-300 hover:text-white text-base'}>{nameAuthor}</span>
                 </a>
                 <div className={'flex w-1/3 justify-between'}>
-                    <a href={linkDownload} target={'_blank'}>
+                    <a href={linkDownload}>
                         <img className={'cursor-pointer'} src={downloadIcon} alt={''} />
                     </a>
                     <img className={'cursor-pointer'} src={addToCollectionIcon} alt={''} />

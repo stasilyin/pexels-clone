@@ -1,13 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Masonry from "react-masonry-css";
-import {useDispatch,} from "react-redux";
 import ImagePanel from "./imagePanel/ImagePanel";
-import {useTypedSelector} from "../../hooks/useTypedSelector";
-import {Photo, Photos} from "pexels";
+import {Photo} from "pexels";
 const breakpointCols = {
-    default: 4,
-    1600: 3,
-    900: 2,
+    default: 5,
+    1600: 4,
+    900: 3,
     650: 1
 }
 

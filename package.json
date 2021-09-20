@@ -2,6 +2,13 @@
   "name": "pexeles-clone",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^6.2.1",
+    "postcss": "^7.0.36",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14"
+  },
   "dependencies": {
     "@craco/craco": "^6.3.0",
     "@testing-library/jest-dom": "^5.11.4",
@@ -12,6 +19,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.18",
+    "@types/react-router-dom": "^5.1.9",
     "@types/redux-thunk": "^2.1.0",
     "dotenv": "^10.0.0",
     "pexels": "^1.2.1",
@@ -55,12 +63,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "autoprefixer": "^9.8.6",
-    "chokidar-cli": "^3.0.0",
-    "concurrently": "^6.2.1",
-    "postcss": "^7.0.36",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14"
   }
 }

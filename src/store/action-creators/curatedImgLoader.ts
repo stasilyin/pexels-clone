@@ -8,7 +8,7 @@ export const curatedImgFetch = (page: number,  pre_page: number) => {
             const apiKey: string = process.env.REACT_APP_PEXELS_API_KEY!
             const client = createClient(apiKey);
             dispatch({type: imageFetchCuratedTypes.FETCH_IMAGE_CURATED})
-            await client.photos.curated( {
+            const response = await client.photos.curated( {
                 page: page,
                 per_page: pre_page,
             }).then((data) => {

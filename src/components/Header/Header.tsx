@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import {useTypedSelector} from "../../hooks/useTypedSelector"
 import {useDispatch} from "react-redux"
-import {bgImgFetch} from "../store/action-creators/img"
-import NavBar from "./nav/NavBar"
+import {bgImgFetch} from "../../store/action-creators/img"
+import NavBar from "../Nav/NavBar"
 import {categoryForSearchRu, categoryForSearchEn} from "../../constants/const"
 import shuffle from "../../helpers/shuffleArrayy"
 import strings from "../../locales/localization"

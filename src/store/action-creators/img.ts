@@ -1,7 +1,7 @@
 import {imageActionType, imageFetchTypes} from "../../types/imgFetch";
 import {Dispatch} from "redux";
 import {createClient} from 'pexels';
-import strings from "../../../locales/localization";
+import strings from "../../locales/localization";
 
 const randomProperty = function (object: { [k: string]:any }) {
     const keys = Object.keys(object);
