@@ -17,17 +17,20 @@ export const bgImgFetch = () => {
             const query = randomProperty(strings.const.categoryForSearch)
 
             dispatch({type: imageFetchTypes.FETCH_IMAGE})
-            await client.photos.search( {
-                query: query,
-                per_page: 1,
-                orientation: 'landscape'
-            }).then((data) => {
-                dispatch({
-                    type: imageFetchTypes.FETCH_IMAGE_SUCCESS,
-                    //@ts-ignore
-                    payload: data.photos[0]
+            await client.photos.curated( {
+                    query: query,
+                    page: Math.floor(Math.random()*10),
+                    per_page: 1,
+                    orientation: 'landscape'
                 })
-            });
+                .then((data) => data)
+                .then((response) => {
+                    dispatch({
+                        type: imageFetchTypes.FETCH_IMAGE_SUCCESS,
+                        //@ts-ignore
+                        payload: response.photos[0]
+                    })
+            })
         }
         catch (e) {
             dispatch({

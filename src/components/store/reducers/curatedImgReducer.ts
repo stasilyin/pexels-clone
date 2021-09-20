@@ -10,13 +10,13 @@ export const curatedImgReducer = (state = initialState, action: imageCuratedActi
     switch (action.type) {
         case imageFetchCuratedTypes.FETCH_IMAGE_CURATED:
             return {
-                imgCurated: [],
+                imgCurated: [...state.imgCurated],
                 loadingCurated: true,
                 errorCurated: null
             }
         case imageFetchCuratedTypes.FETCH_IMAGE_CURATED_SUCCESS:
             return {
-                imgCurated: action.payload,
+                imgCurated: [...state.imgCurated, ...action.payload],
                 loadingCurated: false,
                 errorCurated: null
             }

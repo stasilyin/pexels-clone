@@ -18,20 +18,26 @@ module.exports = {
                 fade: 'fade 0.5s linear',
             },
             height: {
-                '60vh': '60vh',
+                '60vh': '70vh',
                 '66px':  '66px',
-                '500vh':  '500vh',
+                '57px':  '57px',
             },
             width: {
-                '90': '90%'
+                '90': '90%',
+                '53px': '53px'
+            },
+            borderRadius: {
+                '6px': '6px'
             },
             colors: {
                 gray: {
+                    300: '#e8e8e8',
+                    200: '#5e5e5e',
                     100: '#232a34',
                 },
             },
             fontFamily: {
-                roboto: ['Rubik', 'Inter', 'system-ui', '-apple-system'],
+                rubik: ['Rubik', 'Inter', 'system-ui', '-apple-system'],
             },
         },
     },

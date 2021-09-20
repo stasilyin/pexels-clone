@@ -1,4 +1,5 @@
 import { imageFetchTypes, IimageFetchState, imageActionType }  from '../../types/imgFetch'
+import {Photo} from "pexels";
 
 const initialState: IimageFetchState = {
     img: [],
