@@ -1,7 +1,5 @@
 import React from 'react';
-import Main from "./pages/Main";
-import {Route} from "react-router-dom";
-import {Router} from "./components/Router/Route";
+import Router from "./components/Router/Route";
 
 
 const App: React.FC = () => {

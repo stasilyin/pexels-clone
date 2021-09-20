@@ -1,8 +1,6 @@
-import React, {useEffect, useState} from 'react'
-import {useTypedSelector} from "../../hooks/useTypedSelector";
+import React, {useEffect} from 'react'
 import InfiniteScroll from "react-infinite-scroll-component";
 import ImageCard from "../ImageCard/ImageCard";
-import {curatedImgFetch} from "../../store/action-creators/curatedImgLoader";
 import {useDispatch} from "react-redux";
 import {Photo} from "pexels";
 
@@ -10,10 +8,12 @@ type imageListType = {
     func: Function
     page: number
     showMore: any
+    photo:Array<Photo>
+    classes?: string
 }
 
-const ImageList: React.FC<imageListType> = ({func, page, showMore}) => {
-    const curatedPhoto = useTypedSelector(state => state.curatedImg.imgCurated)
+const ImageList: React.FC<imageListType> = ({func, page, showMore, photo, classes}) => {
+    // const curatedPhoto = useTypedSelector(state => state.curatedImg.imgCurated)
 
 
     const dispatch = useDispatch()
@@ -22,15 +22,17 @@ const ImageList: React.FC<imageListType> = ({func, page, showMore}) => {
 
     useEffect(() => {
         dispatch(func)
+        return () => {}
     }, [dispatch, page])
 
     return (
         <InfiniteScroll
-            dataLength={curatedPhoto.length}
+            dataLength={photo.length}
             next={showMore}
+            className={classes}
             hasMore={true}
             loader={<div className={''} key={0}>Loading</div>}>
-            <ImageCard photos={curatedPhoto}/>
+            <ImageCard photos={photo}/>
         </InfiniteScroll>
     )
 

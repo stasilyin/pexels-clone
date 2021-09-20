@@ -1,27 +1,24 @@
 import React, {ChangeEvent, useState} from 'react'
 import strings from "../../locales/localization"
 import {useDispatch} from "react-redux";
-// import {useHistory} from 'react-router-dom'
+import {useHistory} from "react-router-dom";
+import {searchImageTypes} from "../../types/searchImage";
 
-type SearchInputType = {
-    visible: boolean,
-
-}
 
 const SearchInput: React.FC = () => {
     const placeholder = strings.const.header.placeholderInput
     const titleButtonSearch = strings.const.header.titleButtonSearch
     const [search, setSearch] = useState<string>('')
     const dispatch = useDispatch()
-    // let history = useHistory();
+    let history = useHistory();
 
     const eventSearch = (e: ChangeEvent<HTMLInputElement>) => {
         setSearch(e.currentTarget.value)
     }
 
     const submitSearch = () => {
-        // dispatch(searchPhotoThunk(search, 20))
-        // history.push(`/search/${search}`)
+        dispatch({type: searchImageTypes.SEARCH_QUERY, searchQuery: search})
+        history.push(`/search/${search}`)
         console.log("search: ", search)
     }
 
