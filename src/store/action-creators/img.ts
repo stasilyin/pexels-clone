@@ -5,7 +5,6 @@ import strings from "../../locales/localization";
 
 const randomProperty = function (object: { [k: string]:any }) {
     const keys = Object.keys(object);
-    console.log(object[keys[Math.floor(keys.length * Math.random())]])
     return object[keys[Math.floor(keys.length * Math.random())]];
 };
 
@@ -26,9 +25,9 @@ export const bgImgFetch = () => {
                 .then((data) => data)
                 .then((response) => {
                     dispatch({
-                        type: imageFetchTypes.FETCH_IMAGE_SUCCESS,
                         //@ts-ignore
-                        payload: response.photos[0]
+                        payload: response.photos[0],
+                        type: imageFetchTypes.FETCH_IMAGE_SUCCESS,
                     })
             })
         }

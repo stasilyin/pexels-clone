@@ -4,7 +4,8 @@ const initialState: ISearchImageTypes = {
     img: [],
     loading: false,
     error: null ,
-    searchQuery: ''
+    searchQuery: '',
+    searchOrientation: 'all',
 }
 
 export const searchReducer = (state = initialState, action: imageSearchAllActionType): ISearchImageTypes => {
@@ -14,28 +15,40 @@ export const searchReducer = (state = initialState, action: imageSearchAllAction
                 img: state.img,
                 loading: true,
                 error: null,
-                searchQuery: state.searchQuery
+                searchQuery: state.searchQuery,
+                searchOrientation: state.searchOrientation
             }
         case searchImageTypes.SEARCH_IMAGE_SUCCESS:
             return {
                 img: [...state.img, ...action.payload],
                 loading: false,
                 error: null,
-                searchQuery: state.searchQuery
+                searchQuery: state.searchQuery,
+                searchOrientation: state.searchOrientation
             }
         case searchImageTypes.SEARCH_IMAGE_ERROR:
             return {
                 img: [],
                 loading: false,
                 error: action.payload,
-                searchQuery: state.searchQuery
+                searchQuery: state.searchQuery,
+                searchOrientation: state.searchOrientation
             }
         case searchImageTypes.SEARCH_QUERY:
             return {
-                img: state.img,
+                img: [],
                 loading: false,
                 error: null,
-                searchQuery: action.searchQuery
+                searchQuery: action.payload,
+                searchOrientation: state.searchOrientation
+            }
+        case searchImageTypes.SEARCH_ORIENTATION:
+            return {
+                img: [],
+                loading: false,
+                error: null,
+                searchQuery: state.searchQuery,
+                searchOrientation: action.payload
             }
         default:
             return state

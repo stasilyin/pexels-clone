@@ -3,11 +3,18 @@ import strings from "../../locales/localization"
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {searchImageTypes} from "../../types/searchImage";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
+
+type SearchInut = {
+    styleInput?: string,
+    visible?: boolean
+}
 
 
-const SearchInput: React.FC = () => {
+const SearchInput: React.FC<SearchInut> = ({styleInput,visible}) => {
     const placeholder = strings.const.header.placeholderInput
     const titleButtonSearch = strings.const.header.titleButtonSearch
+    const query = useTypedSelector(state => state.search.searchQuery)
     const [search, setSearch] = useState<string>('')
     const dispatch = useDispatch()
     let history = useHistory();
@@ -17,16 +24,25 @@ const SearchInput: React.FC = () => {
     }
 
     const submitSearch = () => {
-        dispatch({type: searchImageTypes.SEARCH_QUERY, searchQuery: search})
+        dispatch({type: searchImageTypes.SEARCH_QUERY, payload: search})
         history.push(`/search/${search}`)
         console.log("search: ", search)
     }
 
+    const handelKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            submitSearch()
+        }
+    }
+
     return (
-        <div className={'pt-3 flex'}>
+        <div className={`${styleInput} items-center ${visible ? 'flex' : 'hidden'}`}>
             <input
-                className={'border-0 h-57px px-5 rounded-l-6px w-full flex-grow outline-none opacity-90 focus:opacity-100'}
-                placeholder={placeholder} value={search} onChange={eventSearch} onSubmit={submitSearch}/>
+                className={`border-0 h-57px px-5 rounded-l-6px flex-grow outline-none opacity-90 focus:opacity-100`}
+                placeholder={placeholder} value={search} onChange={eventSearch}
+                onKeyDown={handelKeyPress}
+                required
+            />
             <button
                 title={titleButtonSearch}
                 onClick={submitSearch}

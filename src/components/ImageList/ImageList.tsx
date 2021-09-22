@@ -3,6 +3,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import ImageCard from "../ImageCard/ImageCard";
 import {useDispatch} from "react-redux";
 import {Photo} from "pexels";
+import PreLoader from '../../img/PreLoader.gif'
+import {useTypedSelector} from "../../hooks/useTypedSelector";
 
 type imageListType = {
     func: Function
@@ -13,7 +15,8 @@ type imageListType = {
 }
 
 const ImageList: React.FC<imageListType> = ({func, page, showMore, photo, classes}) => {
-    // const curatedPhoto = useTypedSelector(state => state.curatedImg.imgCurated)
+    const query = useTypedSelector(state => state.search.searchQuery)
+    const orientation = useTypedSelector(state => state.search.searchOrientation)
 
 
     const dispatch = useDispatch()
@@ -23,7 +26,11 @@ const ImageList: React.FC<imageListType> = ({func, page, showMore, photo, classe
     useEffect(() => {
         dispatch(func)
         return () => {}
-    }, [dispatch, page])
+    }, [dispatch, page, query, orientation])
+
+    // useEffect(() => {
+    //
+    // }, [orientation])
 
     return (
         <InfiniteScroll
@@ -31,7 +38,12 @@ const ImageList: React.FC<imageListType> = ({func, page, showMore, photo, classe
             next={showMore}
             className={classes}
             hasMore={true}
-            loader={<div className={''} key={0}>Loading</div>}>
+            loader={
+                <div className={'flex justify-center'}>
+                    <img src={PreLoader} alt={'load image'} />
+                </div>
+            }
+        >
             <ImageCard photos={photo}/>
         </InfiniteScroll>
     )

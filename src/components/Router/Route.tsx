@@ -9,6 +9,7 @@ const Router = () => {
             <Switch>
                 <Route exact path="/" render={() => <Main />}/>
                 <Route path="/search/:searchTitle" render={() => <SearchPage /> }/>
+                <Route path="*" render={() => <Main /> }/>
             </Switch>
         </div>
     )

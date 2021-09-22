@@ -2,7 +2,7 @@ import {imageSearchAllActionType, searchImageTypes} from "../../types/searchImag
 import {Dispatch} from "redux";
 import {createClient} from 'pexels';
 
-type TypeOrientation = 'landscape' | 'portrait' | 'square'
+type TypeOrientation = 'landscape' | 'portrait' | 'square' | 'all'
 
 export const searchAction = (page: number, pre_page: number, query: string, orientation?: TypeOrientation) => {
     return async (dispatch: Dispatch<imageSearchAllActionType>) => {
@@ -10,7 +10,6 @@ export const searchAction = (page: number, pre_page: number, query: string, orie
             const apiKey: string = process.env.REACT_APP_PEXELS_API_KEY!
             const client = createClient(apiKey);
             dispatch({type: searchImageTypes.SEARCH_IMAGE})
-            dispatch({type: searchImageTypes.SEARCH_QUERY, searchQuery: query})
             const response = await client.photos.search( {
                 query: query,
                 orientation: orientation,

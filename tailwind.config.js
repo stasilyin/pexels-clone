@@ -27,13 +27,17 @@ module.exports = {
                 '53px': '53px'
             },
             borderRadius: {
-                '6px': '6px'
+                '6px': '6px',
+                '20px': '20px'
             },
             colors: {
                 gray: {
                     300: '#e8e8e8',
                     200: '#5e5e5e',
                     100: '#232a34',
+                },
+                blue: {
+                    100: '#0064f9'
                 },
             },
             fontFamily: {

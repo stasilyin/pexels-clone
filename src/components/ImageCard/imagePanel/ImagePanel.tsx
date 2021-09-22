@@ -14,17 +14,17 @@ const ImagePanel: React.FC<imagePanelType> = ({
                                               }) => {
     return (
         <div className={`image-panel opacity-0 absolute bottom-0 bg-black flex-nowrap w-full animate-fade`}>
-            <div className={'flex justify-between pr-2 items-center h-10'}>
-                <a className={'flex justify-center items-center ml-2'} href={photographerUrl} target={'_blank'}>
+            <div className={'flex lg:justify-between justify-end pr-2 items-center h-10'}>
+                <a className={'lg:flex justify-center items-center ml-2 hidden'} href={photographerUrl} target={'_blank'}>
                     <div className='w-8 mr-2 h-8 rounded-full' style={{backgroundColor: bgColor ? bgColor : 'white'}}></div>
                     <span className={'text-white text-gray-300 hover:text-white text-base'}>{nameAuthor}</span>
                 </a>
-                <div className={'flex w-1/3 justify-between'}>
+                <div className={'flex w-1/3 justify-end lg:justify-between'}>
                     <a href={linkDownload}>
                         <img className={'cursor-pointer'} src={downloadIcon} alt={''} />
                     </a>
-                    <img className={'cursor-pointer'} src={addToCollectionIcon} alt={''} />
-                    <img className={'cursor-pointer'} src={like} alt={''} />
+                    <img className={'cursor-pointer hidden lg:block'} src={addToCollectionIcon} alt={''} />
+                    <img className={'cursor-pointer hidden lg:block'} src={like} alt={''} />
                 </div>
             </div>
         </div>

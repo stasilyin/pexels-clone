@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import logo  from '../../img/logo.svg'
+import SearchInput from "../SearchInput/SearchInput";
 
 type navBarType = {
     visible?: boolean
@@ -14,21 +15,22 @@ const NavBar: React.FC<navBarType> = ({visible}) => {
             setChangeColorNav(false)
         }
     }
-    console.log(window.scrollY)
 
-        window.addEventListener("scroll", changeBackgroundNavbar)
+    window.addEventListener("scroll", changeBackgroundNavbar)
 
 
     return (
-        <nav className={`fixed ${(!changeColorNav) ? 'bg-transparent' : 'bg-gray-100 animate-fade'} h-66px 
-                        flex justify-center items-center text-xl w-full top-0 z-50`}
+        <nav className={`fixed ${(!changeColorNav) ? 'bg-transparent' : 'bg-gray-100'} h-66px 
+                        flex justify-center items-center text-xl w-full top-0 z-50`
+            }
             style={{backgroundColor: visible ? '#232a34' : ''}}
         >
-            <div className={'w-90'}>
-                <a href='/' className={'flex items-center'}>
+            <div className={'w-90 flex items-center'}>
+                <a href='/' className={'flex mr-3 items-center'}>
                     <img src={logo} alt={'logo'} />
                     <span className={`ml-3 hidden lg:block text-white`}>Pexels</span>
                 </a>
+                <SearchInput styleInput='w-3/5' visible={(visible || changeColorNav)}/>
             </div>
 
         </nav>

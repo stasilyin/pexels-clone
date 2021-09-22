@@ -5,8 +5,9 @@ import {Photo} from "pexels";
 const breakpointCols = {
     default: 5,
     1600: 4,
-    900: 3,
-    650: 1
+    1200: 3,
+    900: 2,
+    650: 1,
 }
 
 

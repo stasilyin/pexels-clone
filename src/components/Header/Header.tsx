@@ -8,6 +8,7 @@ import shuffle from "../../helpers/shuffleArrayy"
 import strings from "../../locales/localization"
 import SearchInput from "../SearchInput/SearchInput"
 import loader from '../../img/loader.gif'
+import {NavLink} from "react-router-dom";
 
 const Header: React.FC = () => {
     const { img, loading, error }  = useTypedSelector(state => state.img)
@@ -32,16 +33,16 @@ const Header: React.FC = () => {
     const ListSuggested = () => {
         return (
             <div className={'flex'}>
-                <span className='text-base overflow-hidden text-white'>{strings.const.header.ideaForSearch}</span>
+                <span className='text-sm font-light min-w-max overflow-hidden text-white'>{strings.const.header.ideaForSearch}</span>
                     <div className={'flex flex-wrap'}>
                         {suggested.map((category, key): any => {
                             countSuggested = countSuggested+1
                             if (countSuggested < 7) {
                                 return (
-                                    <a key={key} className="text-base text-white mx-3 opacity-70 hover:opacity-90"
-                                       href={`/search/${category}/`}>
+                                    <NavLink key={key} className="text-sm font-light text-white mx-3 opacity-70 hover:opacity-90"
+                                       to={`/search/${category}/`}>
                                         {category}
-                                    </a>
+                                    </NavLink>
                                 )
                             }
                         })}
@@ -60,17 +61,17 @@ const Header: React.FC = () => {
                     >
                         <div className='w-6/12 flex justify-center flex-col'>
                             <h1
-                                className='text-4xl text-white'
+                                className='text-4xl mb-3 text-white'
                             >
                                 {strings.const.header.title}
                             </h1>
-                            <SearchInput />
+                            <SearchInput visible/>
                             <ListSuggested />
                         </div>
                         <div className={'absolute bottom-8 right-8'}>
                             <a href={photographerUrl} className='text-xs text-white'>
-                                <span className='text-gray-300'>{strings.const.header.photographer}</span>
-                                <span className={'mr-1 ml-1 opacity-70 hover:opacity-90'}>{photographer}</span>
+                                <span className='text-gray-300 font-light'>{strings.const.header.photographer}</span>
+                                <span className={'mr-1 ml-1 opacity-70 hover:opacity-90 font-light'}>{photographer}</span>
                             </a>
                         </div>
                     </div>
