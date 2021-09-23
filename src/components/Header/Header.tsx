@@ -8,39 +8,53 @@ import shuffle from "../../helpers/shuffleArrayy"
 import strings from "../../locales/localization"
 import SearchInput from "../SearchInput/SearchInput"
 import loader from '../../img/loader.gif'
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
+import {searchImageTypes} from "../../types/searchImage";
+import {searchAction} from "../../store/action-creators/serachAction";
 
 const Header: React.FC = () => {
     const { img, loading, error }  = useTypedSelector(state => state.img)
+    const query = useTypedSelector(state => state.search.searchQuery)
+    const orientation = useTypedSelector(state => state.search.searchOrientation)
+    const size = useTypedSelector(state => state.search.searchSize)
+    const [page, setPage] = useState(1)
     //@ts-ignore
     const bgImage = img.src?.large2x
     //@ts-ignore
     const photographerUrl = img.photographer_url
     //@ts-ignore
     const photographer = img.photographer
-    let  countSuggested = 0
+    let countSuggested = 0
     const dispatch = useDispatch()
     let suggested: Array<any>
+    let history = useHistory();
 
     strings.getLanguage() === 'en' ?
         suggested =  shuffle(categoryForSearchEn)
         : suggested = shuffle(categoryForSearchRu)
 
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        dispatch({type: searchImageTypes.SEARCH_QUERY, payload: e.currentTarget.innerText})
+    }
+
     useEffect(() => {
         dispatch(bgImgFetch())
+        return () => { }
     }, [])
 
     const ListSuggested = () => {
         return (
             <div className={'flex'}>
-                <span className='text-sm font-light min-w-max overflow-hidden text-white'>{strings.const.header.ideaForSearch}</span>
+                <span className='text-sm font-light min-w-max overflow-hidden text-white'>
+                    {strings.const.header.ideaForSearch}
+                </span>
                     <div className={'flex flex-wrap'}>
                         {suggested.map((category, key): any => {
                             countSuggested = countSuggested+1
                             if (countSuggested < 7) {
                                 return (
                                     <NavLink key={key} className="text-sm font-light text-white mx-3 opacity-70 hover:opacity-90"
-                                       to={`/search/${category}/`}>
+                                       to={`/search/${category}/`} onClick={handleClick}>
                                         {category}
                                     </NavLink>
                                 )
@@ -65,7 +79,7 @@ const Header: React.FC = () => {
                             >
                                 {strings.const.header.title}
                             </h1>
-                            <SearchInput visible/>
+                            <SearchInput visible val={query}/>
                             <ListSuggested />
                         </div>
                         <div className={'absolute bottom-8 right-8'}>

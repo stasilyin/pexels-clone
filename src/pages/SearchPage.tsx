@@ -27,6 +27,7 @@ const SearchPage: React.FC = () => {
                     <OrderSize />
                 </div>
             </div>
+            <h1></h1>
             <ImageList
                 classes={'mt-2'}
                 func={searchAction(page, 20, query, orientation, size)}

@@ -12,11 +12,12 @@ export const searchAction = (page: number, pre_page: number, query: string, orie
             const apiKey: string = process.env.REACT_APP_PEXELS_API_KEY!
             const client = createClient(apiKey);
             dispatch({type: searchImageTypes.SEARCH_IMAGE})
-            const response = await client.photos.search( {
+            await client.photos.search( {
                 query: query,
                 orientation: orientation,
                 page: page,
                 per_page: pre_page,
+                size: size,
             }).then((data) => {
                 dispatch({
                     type: searchImageTypes.SEARCH_IMAGE_SUCCESS,

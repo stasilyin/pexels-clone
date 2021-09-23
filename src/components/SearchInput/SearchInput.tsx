@@ -16,7 +16,7 @@ const SearchInput: React.FC<SearchInut> = ({styleInput,visible, val}) => {
     const placeholder = strings.const.header.placeholderInput
     const titleButtonSearch = strings.const.header.titleButtonSearch
     const query = useTypedSelector(state => state.search.searchQuery)
-    const [search, setSearch] = useState<string>('')
+    const [search, setSearch] = useState<string>(query)
     const dispatch = useDispatch()
     let history = useHistory();
 
@@ -27,7 +27,6 @@ const SearchInput: React.FC<SearchInut> = ({styleInput,visible, val}) => {
     const submitSearch = () => {
         dispatch({type: searchImageTypes.SEARCH_QUERY, payload: search})
         history.push(`/search/${search}`)
-        console.log("search: ", search)
     }
 
     const handelKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -40,7 +39,7 @@ const SearchInput: React.FC<SearchInut> = ({styleInput,visible, val}) => {
         <div className={`${styleInput} items-center ${visible ? 'flex' : 'hidden'}`}>
             <input
                 className={`border-0 h-57px px-5 rounded-l-6px rounded-r-6px sm:rounded-r-none flex-grow outline-none opacity-90 focus:opacity-100`}
-                placeholder={placeholder} value={val ? val : search} onChange={eventSearch}
+                placeholder={placeholder} value={search} onChange={eventSearch}
                 onKeyDown={handelKeyPress}
                 required
             />

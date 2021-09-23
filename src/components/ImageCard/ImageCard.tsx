@@ -11,7 +11,6 @@ const breakpointCols = {
 }
 
 
-
  const ImageCard: React.FC<{photos: Array<Photo>}> = (photos) => {
     return (
         <Masonry
@@ -20,15 +19,18 @@ const breakpointCols = {
         >
 
             {photos.photos.map((photo: Photo) => {
+                const isLiked = localStorage.getItem(photo.id.toString())
                 return (
 
                     <div key={photo.id} className={'image-card block m-2 relative overflow-hidden flex-shrink flex-grow'}>
                         <img src={photo.src.large}
-                             alt={'photo'} className={'object-fill w-full'} />
+                             alt={`work by ${photo.photographer}`} className={'object-fill w-full'} />
                         <ImagePanel avatar={''}
                                     linkDownload={photo.src.original}
                                     nameAuthor={photo.photographer}
                                     photographerUrl={photo.photographer_url}
+                                    id={photo.id}
+                                    isLiked={!!isLiked}
                         />
                     </div>
                 )

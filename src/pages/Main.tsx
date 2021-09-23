@@ -13,6 +13,7 @@ const Main: React.FC = () => {
     return (
         <>
             <Header />
+            <h1></h1>
             <ImageList
                 func={curatedImgFetch(page, 20)}
                 page={page} showMore={showMorePhotos}

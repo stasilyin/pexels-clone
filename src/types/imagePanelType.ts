@@ -3,5 +3,7 @@ export type imagePanelType = {
     nameAuthor: string,
     linkDownload: string,
     photographerUrl: string,
-    bgColor?: string
+    bgColor?: string,
+    id: number,
+    isLiked: boolean,
 }
