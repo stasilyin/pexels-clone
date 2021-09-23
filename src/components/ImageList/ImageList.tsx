@@ -38,7 +38,7 @@ const ImageList: React.FC<imageListType> = ({func, page, showMore, photo, classe
             hasMore={true}
             loader={
                 <div className={'flex justify-center'}>
-                    <img src={PreLoader} alt={'load image'} />
+                    <img src={PreLoader} alt={'preloader'} />
                 </div>
             }
         >

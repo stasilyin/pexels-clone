@@ -32,7 +32,7 @@ const SearchPage: React.FC = () => {
                     <OrderSize />
                 </div>
             </div>
-            <h1 className={`flex justify-center mt-5 sm:text-3xl text-2xl md:text-4xl items-center 
+            <h1 className={`text-center mt-5 sm:text-3xl text-2xl md:text-4xl px-4 
                 ${error ? 'text-red-400' : 'text-black'}`}
             >
                 {

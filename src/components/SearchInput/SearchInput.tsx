@@ -38,7 +38,7 @@ const SearchInput: React.FC<SearchInut> = ({styleInput,visible, val}) => {
     return (
         <div className={`${styleInput} items-center ${visible ? 'flex' : 'hidden'}`}>
             <input
-                className={`border-0 h-57px px-5 rounded-l-6px rounded-r-6px sm:rounded-r-none flex-grow outline-none opacity-90 focus:opacity-100`}
+                className={`w-9/12 border-0 h-57px px-5 sm:w-full rounded-l-6px rounded-r-6px sm:rounded-r-none flex-grow outline-none opacity-90 focus:opacity-100`}
                 placeholder={placeholder} value={search} onChange={eventSearch}
                 onKeyDown={handelKeyPress}
                 required
