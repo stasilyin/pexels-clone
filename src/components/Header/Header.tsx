@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {useTypedSelector} from "../../hooks/useTypedSelector"
 import {useDispatch} from "react-redux"
 import {bgImgFetch} from "../../store/action-creators/img"
@@ -8,16 +8,12 @@ import shuffle from "../../helpers/shuffleArrayy"
 import strings from "../../locales/localization"
 import SearchInput from "../SearchInput/SearchInput"
 import loader from '../../img/loader.gif'
-import {NavLink, useHistory} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {searchImageTypes} from "../../types/searchImage";
-import {searchAction} from "../../store/action-creators/serachAction";
 
 const Header: React.FC = () => {
-    const { img, loading, error }  = useTypedSelector(state => state.img)
+    const { img, loading }  = useTypedSelector(state => state.img)
     const query = useTypedSelector(state => state.search.searchQuery)
-    const orientation = useTypedSelector(state => state.search.searchOrientation)
-    const size = useTypedSelector(state => state.search.searchSize)
-    const [page, setPage] = useState(1)
     //@ts-ignore
     const bgImage = img.src?.large2x
     //@ts-ignore
@@ -27,7 +23,6 @@ const Header: React.FC = () => {
     let countSuggested = 0
     const dispatch = useDispatch()
     let suggested: Array<any>
-    let history = useHistory();
 
     strings.getLanguage() === 'en' ?
         suggested =  shuffle(categoryForSearchEn)
@@ -48,20 +43,20 @@ const Header: React.FC = () => {
                 <span className='text-sm font-light min-w-max overflow-hidden text-white'>
                     {strings.const.header.ideaForSearch}
                 </span>
-                    <div className={'flex flex-wrap'}>
-                        {suggested.map((category, key): any => {
-                            countSuggested = countSuggested+1
-                            if (countSuggested < 7) {
-                                return (
-                                    <NavLink key={key} className="text-sm font-light text-white mx-3 opacity-70 hover:opacity-90"
-                                       to={`/search/${category}/`} onClick={handleClick}>
-                                        {category}
-                                    </NavLink>
-                                )
-                            }
-                        })}
+                        <div className={'flex flex-wrap'}>
+                            {suggested.map((category, key): any => {
+                                countSuggested = countSuggested+1
+                                if (countSuggested < 7) {
+                                    return (
+                                        <NavLink key={key} className="text-sm font-light text-white mx-3 opacity-70 hover:opacity-90"
+                                                 to={`/search/${category}/`} onClick={handleClick}>
+                                            {category}
+                                        </NavLink>
+                                    )
+                                }
+                            })}
+                        </div>
                     </div>
-            </div>
         )
     }
 
@@ -75,7 +70,7 @@ const Header: React.FC = () => {
                     >
                         <div className='w-6/12 flex justify-center flex-col'>
                             <h1
-                                className='text-4xl mb-3 text-white'
+                                className='sm:text-3xl text-2xl md:text-4xl mb-3 text-white'
                             >
                                 {strings.const.header.title}
                             </h1>
@@ -83,7 +78,7 @@ const Header: React.FC = () => {
                             <ListSuggested />
                         </div>
                         <div className={'absolute bottom-8 right-8'}>
-                            <a href={photographerUrl} className='text-xs text-white' target={'_blank'}>
+                            <a href={photographerUrl} className='text-xs text-white' target={'_blank'} rel='noreferrer'>
                                 <span className='text-gray-300 font-light'>{strings.const.header.photographer}</span>
                                 <span className={'mr-1 ml-1 opacity-70 hover:opacity-90 font-light'}>{photographer}</span>
                             </a>

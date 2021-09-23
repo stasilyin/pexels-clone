@@ -31,7 +31,7 @@ const SortedItem: React.FC<SortItemType> = ({
                             {title}
                         </div>
                     </button>
-                    <div className={`${openModal ? 'opacity-1' : 'opacity-0'} block top-12 p-2`}>
+                    <div className={`${openModal ? 'opacity-1' : 'opacity-0'} block top-12 p-2`} >
                         {children}
                     </div>
                 </div>

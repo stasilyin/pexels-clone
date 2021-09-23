@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import SortedItem from "./SortedItem";
 import strings from "../../locales/localization";
-import Smallcon from "../../img/icon/Smallcon";
-import MediumIcon from "../../img/icon/MediumIcon";
-import LargeIcon from "../../img/icon/LargeIcon";
-import OrderSizeIcon from "../../img/icon/OrderSizeIcon";
+import {ReactComponent as SmallIcon} from "../../img/icon/SmallIcon.svg";
+import {ReactComponent as MediumIcon} from "../../img/icon/MediumIcon.svg";
+import {ReactComponent as LargeIcon} from "../../img/icon/LargeIcon.svg";
+import {ReactComponent as OrderSizeIcon} from "../../img/icon/OrderSizeIcon.svg";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {useDispatch} from "react-redux";
 import {searchImageTypes} from "../../types/searchImage";
@@ -33,28 +33,26 @@ const OrderSize: React.FC = () => {
     }
     return(
         <SortedItem title={text.title}
-                    icon={<OrderSizeIcon/>}>
+                    icon={<OrderSizeIcon className='mr-3'/>}>
             <div className={'flex flex-col text-base text-gray-200 bg-white rounded'}>
                 <div className={`${classItems} ${(!isLarge && !isSmall && !isMedium) ? 'text-blue-100' : ''} rounded-t`}
                      onClick={setItemSortHandler}>{text.all}</div>
                 <div className={`${classItems} ${isLarge ? 'fill-current text-blue-100' : ''}`}
                      onClick={setItemSortHandler} data-size={'large'}>
-                    <LargeIcon />
+                    <LargeIcon  className='mr-5'/>
                     {text.large}
                 </div>
                 <div className={`${classItems} ${isMedium ? 'fill-current text-blue-100' : ''}`}
                      onClick={setItemSortHandler} data-size={'medium'}>
-                    <MediumIcon />
+                    <MediumIcon className='mr-5'/>
                     {text.medium}
                 </div>
                 <div className={`${classItems} ${isSmall ? 'fill-current text-blue-100' : ''}`}
                      onClick={setItemSortHandler} data-size={'small'}>
-                    <Smallcon/>
+                    <SmallIcon className='mr-5' />
                     {text.small}
                 </div>
             </div>
-
-
         </SortedItem>
     )
 }

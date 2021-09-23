@@ -5,17 +5,22 @@ import ImageList from "../components/ImageList/ImageList";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import OrderOrientation from "../components/SortComponents/OrderOrientation";
 import OrderSize from "../components/SortComponents/OrderSize";
+import strings from "../locales/localization";
 
 const SearchPage: React.FC = () => {
     const query = useTypedSelector(state => state.search.searchQuery)
     const photo = useTypedSelector(state => state.search.img)
     const orientation = useTypedSelector(state => state.search.searchOrientation)
     const size = useTypedSelector(state => state.search.searchSize)
+    const titles = strings.const.titles.searchPage
+    const errorsText = strings.const.errors
     const [page, setPage] = useState(1)
+    const { error, loading } = useTypedSelector(state => state.search)
 
     const showMorePhotos = () => {
         setPage(cur => cur + 1)
     }
+
     return(
         <>
             <NavBar visible val={query} />
@@ -27,7 +32,17 @@ const SearchPage: React.FC = () => {
                     <OrderSize />
                 </div>
             </div>
-            <h1></h1>
+            <h1 className={`flex justify-center mt-5 sm:text-3xl text-2xl md:text-4xl items-center 
+                ${error ? 'text-red-400' : 'text-black'}`}
+            >
+                {
+                    error ?
+                        error :
+                        (!error && photo.length === 0 && !loading
+                            ? errorsText.emptySearch
+                                : `${titles} "${query}"`)
+                }
+            </h1>
             <ImageList
                 classes={'mt-2'}
                 func={searchAction(page, 20, query, orientation, size)}

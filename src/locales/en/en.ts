@@ -1,11 +1,15 @@
 import {categoryForSearch} from "./subcat/categoryForSearch"
 import {header} from "./subcat/header"
 import {sort} from './subcat/sort'
+import {titles} from './subcat/titles'
+import {errors} from './subcat/errors'
 
 export const en = {
     const: {
         categoryForSearch,
         header,
-        sort
+        sort,
+        titles,
+        errors
     }
 }

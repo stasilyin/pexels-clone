@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import SortedItem from "./SortedItem";
 import strings from "../../locales/localization";
-import Squere from "../../img/icon/Square";
-import Vertical from "../../img/icon/Vertical";
-import Horizontal from "../../img/icon/Horizontal";
+import {ReactComponent as Square} from "../../img/icon/Square.svg";
+import {ReactComponent as Vertical} from "../../img/icon/Vertical.svg";
+import {ReactComponent as Horizontal} from "../../img/icon/Horizontal.svg";
 import {useDispatch} from "react-redux";
 import {searchImageTypes} from "../../types/searchImage";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
@@ -44,17 +44,17 @@ const OrderOrientation: React.FC = () => {
                      onClick={setItemSortHandler}>{text.all}</div>
                 <div className={`${classItems} ${isHorizontal ? 'fill-current text-blue-100' : ''}`}
                      onClick={setItemSortHandler} data-orientation={'landscape'}>
-                    <Vertical />
+                    <Vertical className='mr-5' />
                     {text.horizontal}
                 </div>
                 <div className={`${classItems} ${isVertical ? 'fill-current text-blue-100' : ''}`}
                      onClick={setItemSortHandler}  data-orientation={'portrait'}>
-                    <Horizontal />
+                    <Horizontal className='mr-5'/>
                     {text.vertical}
                 </div>
                 <div className={`${classItems} ${isSquare ? 'fill-current text-blue-100' : ''} rounded-b`}
                      onClick={setItemSortHandler} data-orientation={'square'}>
-                    <Squere/>
+                    <Square className='mr-5'/>
                     {text.square}
                 </div>
             </div>
