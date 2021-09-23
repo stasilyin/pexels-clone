@@ -1,18 +1,20 @@
 import React, {ChangeEvent, useState} from 'react'
-import strings from "../../locales/localization"
-import {useDispatch} from "react-redux";
-import {useHistory} from "react-router-dom";
-import {searchImageTypes} from "../../types/searchImage";
-import {useTypedSelector} from "../../hooks/useTypedSelector";
+import {useDispatch} from "react-redux"
+import {useHistory} from "react-router-dom"
+import {useTypedSelector} from "../../hooks/useTypedSelector"
 
-type SearchInut = {
+import strings from "../../locales/localization"
+
+import {searchImageTypes} from "../../types/searchImage"
+
+type SearchInputType = {
     styleInput?: string,
     visible?: boolean
     val?: string
 }
 
 
-const SearchInput: React.FC<SearchInut> = ({styleInput,visible, val}) => {
+const SearchInput: React.FC<SearchInputType> = ({styleInput,visible}) => {
     const placeholder = strings.const.header.placeholderInput
     const titleButtonSearch = strings.const.header.titleButtonSearch
     const query = useTypedSelector(state => state.search.searchQuery)
@@ -29,7 +31,7 @@ const SearchInput: React.FC<SearchInut> = ({styleInput,visible, val}) => {
         history.push(`/search/${search}`)
     }
 
-    const handelKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             submitSearch()
         }
@@ -40,7 +42,7 @@ const SearchInput: React.FC<SearchInut> = ({styleInput,visible, val}) => {
             <input
                 className={`w-9/12 border-0 h-57px px-5 sm:w-full rounded-l-6px rounded-r-6px sm:rounded-r-none flex-grow outline-none opacity-90 focus:opacity-100`}
                 placeholder={placeholder} value={search} onChange={eventSearch}
-                onKeyDown={handelKeyPress}
+                onKeyDown={handleKeyPress}
                 required
             />
             <button
