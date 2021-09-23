@@ -16,7 +16,7 @@ const ImagePanel: React.FC<imagePanelType> = ({
         <div className={`image-panel opacity-0 absolute bottom-0 bg-black flex-nowrap w-full animate-fade`}>
             <div className={'flex lg:justify-between justify-end pr-2 items-center h-10'}>
                 <a className={'lg:flex justify-center items-center ml-2 hidden'} href={photographerUrl} target={'_blank'}>
-                    <div className='w-8 mr-2 h-8 rounded-full' style={{backgroundColor: bgColor ? bgColor : 'white'}}></div>
+                    <div className='w-8 mr-2 h-8 rounded-full' style={{backgroundColor: bgColor ? bgColor : 'white'}}/>
                     <span className={'text-white text-gray-300 hover:text-white text-base'}>{nameAuthor}</span>
                 </a>
                 <div className={'flex w-1/3 justify-end lg:justify-between'}>

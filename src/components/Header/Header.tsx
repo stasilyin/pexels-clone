@@ -69,7 +69,7 @@ const Header: React.FC = () => {
                             <ListSuggested />
                         </div>
                         <div className={'absolute bottom-8 right-8'}>
-                            <a href={photographerUrl} className='text-xs text-white'>
+                            <a href={photographerUrl} className='text-xs text-white' target={'_blank'}>
                                 <span className='text-gray-300 font-light'>{strings.const.header.photographer}</span>
                                 <span className={'mr-1 ml-1 opacity-70 hover:opacity-90 font-light'}>{photographer}</span>
                             </a>

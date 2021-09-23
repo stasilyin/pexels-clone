@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import SortedItem from "./SortedItem";
 import strings from "../../locales/localization";
 import Squere from "../../img/icon/Square";
@@ -9,10 +9,21 @@ import {searchImageTypes} from "../../types/searchImage";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 
 const OrderOrientation: React.FC = () => {
+    const [isHorizontal, setIsHorizontal] = useState(false)
+    const [isVertical, setIsVertical] = useState(false)
+    const [isSquare, setIsSquare] = useState(false)
+
     const text = strings.const.sort.type.orientation
     const classItems = 'select-none px-2 hover:bg-gray-400 opacity-70 h-10 cursor-pointer flex justify-center items-center'
     const orientation = useTypedSelector(state => state.search.searchOrientation)
+
+    useEffect(() => {
+        setIsHorizontal(orientation === 'landscape')
+        setIsVertical(orientation === 'portrait')
+        setIsSquare(orientation === 'square')
+    }, [orientation])
     const dispatch = useDispatch()
+
     const setItemSortHandler = (e: React.MouseEvent<HTMLDivElement>) => {
         dispatch({
             type: searchImageTypes.SEARCH_ORIENTATION,
@@ -29,22 +40,24 @@ const OrderOrientation: React.FC = () => {
 
         }>
             <div className={'flex flex-col text-base text-gray-200 bg-white rounded'}>
-                <div className={`${classItems} rounded-t`} onClick={setItemSortHandler}>{text.all}</div>
-                <div className={classItems} onClick={setItemSortHandler} data-orientation={'landscape'}>
+                <div className={`${classItems} ${(!isHorizontal && !isSquare && !isVertical) ? 'text-blue-100' : ''} rounded-t`}
+                     onClick={setItemSortHandler}>{text.all}</div>
+                <div className={`${classItems} ${isHorizontal ? 'fill-current text-blue-100' : ''}`}
+                     onClick={setItemSortHandler} data-orientation={'landscape'}>
                     <Vertical />
                     {text.horizontal}
                 </div>
-                <div className={classItems} onClick={setItemSortHandler}  data-orientation={'portrait'}>
+                <div className={`${classItems} ${isVertical ? 'fill-current text-blue-100' : ''}`}
+                     onClick={setItemSortHandler}  data-orientation={'portrait'}>
                     <Horizontal />
                     {text.vertical}
                 </div>
-                <div className={`${classItems} rounded-b`} onClick={setItemSortHandler} data-orientation={'square'}>
+                <div className={`${classItems} ${isSquare ? 'fill-current text-blue-100' : ''} rounded-b`}
+                     onClick={setItemSortHandler} data-orientation={'square'}>
                     <Squere/>
                     {text.square}
                 </div>
             </div>
-
-
         </SortedItem>
     )
 }

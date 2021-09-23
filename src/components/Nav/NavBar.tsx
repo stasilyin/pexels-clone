@@ -4,8 +4,9 @@ import SearchInput from "../SearchInput/SearchInput";
 
 type navBarType = {
     visible?: boolean
+    val?:string
 }
-const NavBar: React.FC<navBarType> = ({visible}) => {
+const NavBar: React.FC<navBarType> = ({visible, val}) => {
     const [changeColorNav, setChangeColorNav] = useState<boolean>(false)
 
     const changeBackgroundNavbar = () => {
@@ -30,7 +31,7 @@ const NavBar: React.FC<navBarType> = ({visible}) => {
                     <img src={logo} alt={'logo'} />
                     <span className={`ml-3 hidden lg:block text-white`}>Pexels</span>
                 </a>
-                <SearchInput styleInput='w-3/5' visible={(visible || changeColorNav)}/>
+                <SearchInput styleInput='w-3/5' visible={(visible || changeColorNav)} val={val}/>
             </div>
 
         </nav>

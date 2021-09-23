@@ -6,6 +6,7 @@ const initialState: ISearchImageTypes = {
     error: null ,
     searchQuery: '',
     searchOrientation: 'all',
+    searchSize: 'all',
 }
 
 export const searchReducer = (state = initialState, action: imageSearchAllActionType): ISearchImageTypes => {
@@ -16,7 +17,8 @@ export const searchReducer = (state = initialState, action: imageSearchAllAction
                 loading: true,
                 error: null,
                 searchQuery: state.searchQuery,
-                searchOrientation: state.searchOrientation
+                searchOrientation: state.searchOrientation,
+                searchSize: state.searchSize
             }
         case searchImageTypes.SEARCH_IMAGE_SUCCESS:
             return {
@@ -24,7 +26,8 @@ export const searchReducer = (state = initialState, action: imageSearchAllAction
                 loading: false,
                 error: null,
                 searchQuery: state.searchQuery,
-                searchOrientation: state.searchOrientation
+                searchOrientation: state.searchOrientation,
+                searchSize: state.searchSize,
             }
         case searchImageTypes.SEARCH_IMAGE_ERROR:
             return {
@@ -32,7 +35,8 @@ export const searchReducer = (state = initialState, action: imageSearchAllAction
                 loading: false,
                 error: action.payload,
                 searchQuery: state.searchQuery,
-                searchOrientation: state.searchOrientation
+                searchOrientation: state.searchOrientation,
+                searchSize: state.searchSize,
             }
         case searchImageTypes.SEARCH_QUERY:
             return {
@@ -40,7 +44,8 @@ export const searchReducer = (state = initialState, action: imageSearchAllAction
                 loading: false,
                 error: null,
                 searchQuery: action.payload,
-                searchOrientation: state.searchOrientation
+                searchOrientation: state.searchOrientation,
+                searchSize: state.searchSize
             }
         case searchImageTypes.SEARCH_ORIENTATION:
             return {
@@ -48,7 +53,17 @@ export const searchReducer = (state = initialState, action: imageSearchAllAction
                 loading: false,
                 error: null,
                 searchQuery: state.searchQuery,
-                searchOrientation: action.payload
+                searchOrientation: action.payload,
+                searchSize: state.searchSize
+            }
+        case searchImageTypes.SEARCH_SIZE:
+            return {
+                img: [],
+                loading: false,
+                error: null,
+                searchQuery: state.searchQuery,
+                searchOrientation: state.searchOrientation,
+                searchSize: action.payload
             }
         default:
             return state

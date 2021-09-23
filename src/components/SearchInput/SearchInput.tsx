@@ -8,10 +8,11 @@ import {useTypedSelector} from "../../hooks/useTypedSelector";
 type SearchInut = {
     styleInput?: string,
     visible?: boolean
+    val?: string
 }
 
 
-const SearchInput: React.FC<SearchInut> = ({styleInput,visible}) => {
+const SearchInput: React.FC<SearchInut> = ({styleInput,visible, val}) => {
     const placeholder = strings.const.header.placeholderInput
     const titleButtonSearch = strings.const.header.titleButtonSearch
     const query = useTypedSelector(state => state.search.searchQuery)
@@ -38,15 +39,15 @@ const SearchInput: React.FC<SearchInut> = ({styleInput,visible}) => {
     return (
         <div className={`${styleInput} items-center ${visible ? 'flex' : 'hidden'}`}>
             <input
-                className={`border-0 h-57px px-5 rounded-l-6px flex-grow outline-none opacity-90 focus:opacity-100`}
-                placeholder={placeholder} value={search} onChange={eventSearch}
+                className={`border-0 h-57px px-5 rounded-l-6px rounded-r-6px sm:rounded-r-none flex-grow outline-none opacity-90 focus:opacity-100`}
+                placeholder={placeholder} value={val ? val : search} onChange={eventSearch}
                 onKeyDown={handelKeyPress}
                 required
             />
             <button
                 title={titleButtonSearch}
                 onClick={submitSearch}
-                className={'flex justify-center items-center h-57px w-53px rounded-r-6px bg-white'}
+                className={'sm:flex justify-center items-center h-57px w-53px rounded-r-6px bg-white hidden'}
             >
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path

@@ -3,8 +3,10 @@ import {Dispatch} from "redux";
 import {createClient} from 'pexels';
 
 type TypeOrientation = 'landscape' | 'portrait' | 'square' | 'all'
+type TypeSize = 'small' | 'medium' | 'large' | 'all'
 
-export const searchAction = (page: number, pre_page: number, query: string, orientation?: TypeOrientation) => {
+export const searchAction = (page: number, pre_page: number, query: string, orientation?: TypeOrientation,
+                             size?: TypeSize) => {
     return async (dispatch: Dispatch<imageSearchAllActionType>) => {
         try {
             const apiKey: string = process.env.REACT_APP_PEXELS_API_KEY!

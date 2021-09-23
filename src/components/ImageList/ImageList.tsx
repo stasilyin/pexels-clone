@@ -17,6 +17,7 @@ type imageListType = {
 const ImageList: React.FC<imageListType> = ({func, page, showMore, photo, classes}) => {
     const query = useTypedSelector(state => state.search.searchQuery)
     const orientation = useTypedSelector(state => state.search.searchOrientation)
+    const size = useTypedSelector(state => state.search.searchSize)
 
 
     const dispatch = useDispatch()
@@ -26,11 +27,7 @@ const ImageList: React.FC<imageListType> = ({func, page, showMore, photo, classe
     useEffect(() => {
         dispatch(func)
         return () => {}
-    }, [dispatch, page, query, orientation])
-
-    // useEffect(() => {
-    //
-    // }, [orientation])
+    }, [dispatch, page, query, orientation, size])
 
     return (
         <InfiniteScroll
