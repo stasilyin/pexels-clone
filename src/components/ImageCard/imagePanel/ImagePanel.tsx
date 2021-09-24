@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {imagePanelType} from "../../../types/imagePanelType"
 import {ReactComponent as Like} from '../../../img/Download.svg'
 import {ReactComponent as AddToCollectionIcon} from '../../../img/AddToCollectionIcon.svg'
@@ -28,6 +28,20 @@ const ImagePanel: React.FC<imagePanelType> = ({
         }
     }
 
+    const linkBlob = async (e:  React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault()
+        const image = await fetch(e.currentTarget.href)
+        const imageBlob = await image.blob()
+
+        const link = document.createElement('a')
+        link.href = URL.createObjectURL(imageBlob)
+        link.download = 'image'
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+    }
+
+
     return (
         <div className={`image-panel opacity-0 absolute bottom-0 bg-black flex-nowrap w-full animate-fade`}>
             <div className={'flex lg:justify-between justify-end pr-2 items-center h-10'}>
@@ -40,9 +54,8 @@ const ImagePanel: React.FC<imagePanelType> = ({
                     <span className={'text-white text-gray-300 hover:text-white text-base'}>{nameAuthor}</span>
                 </a>
                 <div className={'flex w-1/3 justify-end lg:justify-between'}>
-                    <a href={linkDownload} target={'_blank'} rel='noreferrer'>
+                    <a href={linkDownload} data-id={id} onClick={linkBlob}>
                         <Download className={classIcon} />
-
                     </a>
                     <AddToCollectionIcon className={classIcon}/>
                     <Like className={classIcon} data-id={id} onClick={likeHandler} style={{color: isLiked ? 'red' : ''}}/>

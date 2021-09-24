@@ -10,9 +10,11 @@ const Main: React.FC = () => {
     const { errorCurated } = useTypedSelector(state => state.curatedImg)
     const [page, setPage] = useState(1)
     const titles = strings.const.titles.headerPage
+    console.log(curatedPhoto)
     const showMorePhotos = () => {
         setPage(cur => cur + 1)
     }
+
     return (
         <>
             <Header />
