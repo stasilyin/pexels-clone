@@ -30,7 +30,7 @@ yarn install
 
 ## Running the app
 
-Run `yarn start` to intialize and run the webpack development server. Navigate to [http://localhost:8081/](http://localhost:8080). The app will automatically reload if you change any of the source files.
+Run `yarn start` to intialize and run the webpack development server. Navigate to [http://localhost:3000/](http://localhost:8080). The app will automatically reload if you change any of the source files.
 
 ## Build the app
 
