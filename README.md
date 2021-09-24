@@ -1,21 +1,40 @@
-# Available Scripts
 
-In the project directory, you can run:
+# Tests task
 
-## `yarn start`
+- Clone this project to any folder on your local machine
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+git clone https://github.com/stasilyin/pexels-clone.git <FOLDER_NAME_HERE>
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Navigate into the folder name specified
 
-## `yarn test`
+```bash
+cd <FOLDER_NAME_HERE>
+```
+## ADD ENV FILE
 
-Launches the test runner in the interactive watch mode.\
+```bash
+create file .env.local at the root of the directory
 
-## `yarn build`
+paste text
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+REACT_APP_PEXELS_API_KEY=563492ad6f91700001000001eff4274f211943b389ed84fba05daf1b
+```
+
+## Installing Packages
+
+```bash
+yarn install
+```
+
+## Running the app
+
+Run `yarn start` to intialize and run the webpack development server. Navigate to [http://localhost:8081/](http://localhost:8080). The app will automatically reload if you change any of the source files.
+
+## Build the app
+
+```bash
+yarn build
+```
 
